@@ -1,0 +1,163 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<script>
+///////////// Google Maps in Modals ///////////////////////////////////////////
+
+var map;
+google.maps.visualRefresh = true;
+
+initMaps = {};
+
+function explode(){
+
+  var results = $( ".attraction-results" );
+  $( ".attraction-results" ).wrapAll( "<div class='new' />");
+}
+setTimeout(explode, 1000);
+
+function implode(){
+
+  var results = $( ".event-results" );
+  $( ".event-results" ).wrapAll( "<div class='new' />");
+}
+setTimeout(implode, 1);
+ </script>
+<div class="results-bg">
+
+<div class="parent">
+<a href="/"><div class="arrow ">
+<i class="fa fa-angle-double-left" aria-hidden="true" style="font-size: 40px;"><span style="font-family:Arimo; font-size:15px; vertical-align:middle;">  start over </span></i>
+
+
+
+</div> </a>
+
+<a><div class="nah">
+<i class="fa fa-angle-double-right" data-toggle="modal" data-target="#myModal" aria-hidden="true" style="font-size: 40px;"><span style="font-family:Arimo; font-size:15px; vertical-align:middle;">  nah </span></i>
+
+
+
+</div> </a>
+
+
+<h1 class ="header"> Take your pick: </h1>
+<div>
+<!-- Trigger the modal with a button -->
+<!-- <button type="button" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal">Open Modal</button>
+ -->
+<!-- Modal -->
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title" style="text-align:center; font-family:Arimo;">You're Being Picky...</h4>
+      </div>
+      <div class="modal-body">
+        <p style="text-align:center;font-family:Arimo;">Maybe Yelp Can Help!</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+
+ {% for result in yelp_result %}
+  <div class="attraction-results">
+    <div class="yelp-results-btn" id="{{result.id}}">
+         <div value="{{result.id}}"> 
+                <h4 class="results-header" style="color:black;">{{ result.name }} </h4>   
+                  {% for item in result.location %}
+                    {{ item }}
+                    {% endfor %}
+                    <br>
+                      <img class="yelp-result-img"src="{{ result.image }}"><br>
+                        <button type="button"  class="btn btn-primary triggerAttModal" data-attraction-id="{{ result.id }}"
+                        data-toggle="modal" 
+                        data-target=""><img src='https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/Magnifying_glass_icon.svg/490px-Magnifying_glass_icon.svg.png' height='15' width='15'></span></button>  
+                          <div class="modal fade" id="attractionModal{{ result.id }}" tabindex="-1" role="dialog" aria-labelledby="basicModal" aria-hidden="true" data-attraction-id="{{ result.id }}">
+                            <div class="modal-dialog">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <button id="results-ev-header" type="button" class="close" data-dismiss="modal" aria-hidden="true"> About {{ result.name }}</button><br>
+                                  <h4 class="modal-title" id="myModalLabel"></h4>
+                                </div>
+                                  <div class="modal-body">
+                                    <div style="color: black"> Rated: {{ result.rating }}</div>
+                                      <div style="color: black"> Address: 
+                                       {% for item in result.location %}
+                                          {{ item }}
+                                            {% endfor %}
+                                      </div>
+                                    <div style="color: black"> Phone: {{ result.phone }}</div>
+                                  <div class="modalMap" id="map{{ result.id }}"></div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal"    ><img src='http://www.clipartbest.com/cliparts/4cb/Ez7/4cbEz7zcg.jpeg' height='10' width='10'></span> Close</button      >
+                                     
+                                        <a href="{{ result.url }}" class="btn btn-default saveAttractionModalBtn"><i class="fa fa-yelp" aria-hidden="true"></i></a>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+            </div> 
+        </div>  
+        </div>
+
+</div>
+</div>
+
+</body>
+<script>
+
+initMaps['{{ result.id }}'] = function(){
+  var myPlaceLatLng = { lat:{{ result.latitude }}, lng:{{ result.longitude }}};
+
+  var map = new google.maps.Map(document.getElementById('map' + '{{ result.id }}'), {
+    center: myPlaceLatLng,
+    zoom: 16,
+  });
+
+  var marker = new google.maps.Marker({
+      position: myPlaceLatLng,
+      animation: google.maps.Animation.DROP,
+      map: map,
+      icon: "/static/images/map-marker-icon.png",
+      title: "{{ result.name }}"
+      // // draggable: false,     
+   });
+/////////////////
+ // info window //
+ /////////////////
+
+ var contentString = '<div id="content">' +
+  '<h4 style="color:black;font:12px;">"{{ result.name }}"</h4>' + 
+  '<div>"<img class="yelp-result-img"src="{{ result.image }}">"</div>'
+  '</div>';
+
+var infoWindow = new google.maps.InfoWindow({
+  content: contentString,
+  maxWidth: 200
+});
+
+  marker.addListener('click', function() {
+    infoWindow.open(map, marker);
+  });
+};
+
+
+
+</script>
+
+ <script async defer src="https://maps.googleapis.com/maps/api/js?key= AIzaSyAFcRfYVI7vOk6etsOSlIsOolDbJzNIMxc&callback=initMap"
+  type="text/javascript"></script>
+
+{% endfor %} 
+
+{% endblock %}

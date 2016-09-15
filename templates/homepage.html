@@ -1,0 +1,106 @@
+
+{% extends 'base.html' %}
+{% block content %}
+<html class="home">
+
+<div class="container">
+  
+  <div class="search">
+    <div class="vertical-align">
+
+        <!-- <header> -->
+
+        <h1 id="main-title">Guiltless</h1>
+        <p class="tag">Walk, explore... eat &amp; drink tasty treats.</p>
+        <!-- </header> -->
+
+        <div class="row">
+          <div class="input-style-1">
+
+            <!-- FORM -->
+            <form action="/process_search" method="GET">
+              
+                <!-- LOCATION -->
+                <input style="color:black; opacity: 0.7;" type="text" id="location" name="location" required placeholder="Enter a location:"></br>
+                
+
+                <!-- TERM FOR YELP TO SEARCH -->
+                <div class="adventure-box">
+                <p>{{ today }}'s Adventure:</p>
+                
+                {% if today == 'Monday' %}
+                <select name="term">
+                  <option value="meat">Meat</option>
+                  <option value="meatless">Meatless</option>
+                  <option value="martini">Martini</option>
+                </select><br>
+                {% elif today == 'Tuesday' %}
+                <select name="term">
+                  <option value="taco">Taco</option>
+                  <option value="tequila">Tequila</option>
+                  <option value="vegan">Tofu</option>
+                </select><br>
+                {% elif today == 'Wednesday' %}
+                <select name="term">
+                  <option value="wine">Wine</option>
+                  <option value="waffles">Waffles</option>
+                  <option value="food">Whatever</option>
+                </select><br>
+                {% elif today == 'Thursday' %}
+                <select name="term">
+                  <option value="beer">Thirsty</option>
+                  <option value="thai">Thai</option>
+                  <option value="tomato">Tomato</option>
+                </select><br>
+                {% elif today == 'Friday' %}
+                <select name="term">
+                  <option value="food_truck">Food Truck</option>
+                  <option value="fried">Fried</option>
+                  <option value="flan">Flan</option>
+                  <option value="fancy">Fancy</option>
+                </select><br>
+
+                {% elif today == 'Saturday' %}
+                <select name="term" id="term">
+                  <option name="deserts" value="sweets">Sweets</option>
+                  <option value="steak">Steak</option>
+                  <option value="salad">Salad</option>
+                  <option value="sushi">Sushi/Sake</option>
+                </select><br>
+
+                {% elif today == 'Sunday' %}
+                <select name="term">
+                  <option value="seafood">Seafood</option>
+                  <option value="surprise">Surprise</option>
+                  <option value="brunch">Scramble</option>
+                </select><br>
+                {% endif %}
+              </div>
+
+                <!-- DISTANCE TO WALK -->
+                <div class="walk-box">
+                <p>Walking Distance:</p>
+                <select name="distance" id="distance">
+                  <option value="804">Hop</option>
+                  <option value="1609">Skip</option>
+                  <option value="2414">Jump</option>
+                </select><br>
+              </div>
+
+                <!-- SUBMIT BUTTON -->
+                <div class="parent-submit">
+                  <div class="submit">
+                    <input id="submit-search" type="submit" value="go now"/>
+                  </div>
+                </div>
+
+            </form>
+
+          </div> <!-- input style-1 -->
+        </div> <!-- row -->
+    </div> <!-- vertical align -->
+  </div> <!-- search -->
+</div> <!-- container -->
+</html>
+
+{% endblock %}
