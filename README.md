@@ -33,13 +33,12 @@ Guiltless was built by five teammates during the one-day [All-Women Hackathon in
 Users can enter a custom starting address or use their current location, which is auto-filled when the homepage loads. Themed destinations correspond to each day of the week (on Tuesday, users can select Tacos, Tequila, or Tofu) and the user's walking distance is measured by a hop(1/2 mile), skip (1 mile), or a jump (1 1/2 miles).
 
 
-![Homepage](/static/images/homepage.png)
+![homepage](https://cloud.githubusercontent.com/assets/18318386/18684683/df060b6a-7f29-11e6-92b7-f8cdda4cef47.png)
 
 
 The results page displays three restaurants that match the user's search. A users can learn more about the restaurant by clicking on the magnifying glass, which opens a map showing the business' location with a link to their Yelp page.
 
-
-![Search](/static/images/search.png)
+![search](https://cloud.githubusercontent.com/assets/18318386/18684684/e19e344c-7f29-11e6-9d1c-c189151f78eb.png)
 
 ### <a name="team"></a>Team
 Guiltness was made by software engineers [Allison Lyon](https://www.linkedin.com/in/allisonplyon), [Christina Long](https://www.linkedin.com/in/cvlong), [Dori Runyon](https://www.linkedin.com/in/dorirunyon), and [Veronica Erick](https://www.linkedin.com/in/veronicaerick) with designer [Amy Kircher](https://www.linkedin.com/in/amykircher).
