@@ -1,3 +1,45 @@
-[Go there!](http://guiltless.herokuapp.com/)
+# Guiltless
 
-Guiltless was created at the Expat Women's Hackathon ad Dev Bootcamp on September 10th. The project team consisted of 6 women- 5 developers and 1 UI designer. The theme of the hackathon was SF City Challenges - building app to encourage residents and tourists alike to explore the city and support small businesses. Guiltless is an app made to help with eliminating decision fatigue and providing the best options for a destination to eat or drink dependent on the day of the week and the user's location. Guiltless automatically creates an alliteration dependent on week day (think taco Tuesday), a distance to walk based on the user's choice (hop (.5 miles), skip (1 mile) or a jump (1.5 miles) and a google map for easy navigation to the location. We created this app to get people out and exploring the city by foot to indulge in finding city gems including bars, restaurants, food trucks and sweet spots (hence the name guiltless; if you're walking it off, did it even happen?). We wanted to make an app that used humor and narrowed down the endless amount of options there are for food and drink options in San Francisco to create a fun and easy experience for the user. Some of the technologies used: Python, Flask, Javascript, jQuery, Yelp API, Google Maps API, geocoding and HTML/CSS. 
+Guiltless is an interactive web application that recommends themed treat destinations for food and drinks based on alliterative suggestions for the day of the week, a user’s starting location, and preferred walking distance. Most importantly, Guiltless uses humor (and a bit of sass) to eliminate decision fatigue by providing the user with fewer, simpler choices and encouraging users to explore the city by walking.
+
+https://guiltless.herokuapp.com/
+
+## Table of Contents
+- [Tech stack](#tech)
+- [Overview](#overview)
+- [How it works](#how)
+- [Team](#team)
+
+### <a name="tech"></a>Tech stack
+- Python
+- Flask
+- Javascript
+- jQuery
+- AJAX
+- JSON
+- Jinja2
+- Bootstrap
+- HTML
+- CSS
+- Google Maps API
+- Yelp API
+
+Dependencies are listed in requirements.txt
+
+### <a name="overview"></a>Overview
+Guiltless was built by five teammates during the one-day [All-Women Hackathon in San Francisco](https://www.eventbrite.com/e/the-all-women-hackathon-san-francisco-tickets-26387976147#) hosted by The Expat Woman on September 10, 2016. In line with the theme "San Francisco City Hack Challenges," Guiltless encourages SF residents, new expats, and tourists to support local businesses and explore new neighborhoods.
+
+### <a name="how"></a>How it works
+Users can enter a custom starting address or use their current location, which is auto-filled when the homepage loads. Themed destinations correspond to each day of the week (on Tuesday, users can select Tacos, Tequila, or Tofu) and the user's walking distance is measured by a hop(1/2 mile), skip (1 mile), or a jump (1 1/2 miles).
+
+
+![Homepage](/static/images/homepage.png)
+
+
+The results page displays three restaurants that match the user's search. A users can learn more about the restaurant by clicking on the magnifying glass, which opens a map showing the business' location with a link to their Yelp page.
+
+
+![Search](/static/images/search.png)
+
+### <a name="team"></a>Team
+Guiltness was made by software engineers [Allison Lyon](https://www.linkedin.com/in/allisonplyon), [Christina Long](https://www.linkedin.com/in/cvlong), [Dori Runyon](https://www.linkedin.com/in/dorirunyon), and [Veronica Erick](https://www.linkedin.com/in/veronicaerick) with designer [Amy Kircher](https://www.linkedin.com/in/amykircher).
